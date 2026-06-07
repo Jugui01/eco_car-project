@@ -1,0 +1,3 @@
+ademe:
+  car_labelling_url: "https://data.ademe.fr/data-fair/api/v1/datasets/ademe-car-labelling/lines"
+  page_size: 1000
