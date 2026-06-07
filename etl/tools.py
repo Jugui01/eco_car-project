@@ -1,7 +1,8 @@
 import yaml
 import requests
 import pandas as pd
-import pyodbc
+from sqlalchemy import create_engine
+import urllib
 
 
 def get_api_vehicle():
@@ -49,5 +50,10 @@ def connect_database():
         "Connection Timeout=30;"
     )
 
-    return(pyodbc.connect(conn_str))
+    params = urllib.parse.quote_plus(conn_str)
 
+    engine = create_engine(
+        f"mssql+pyodbc:///?odbc_connect={params}"
+    )
+
+    return engine
