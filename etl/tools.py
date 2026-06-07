@@ -1,6 +1,7 @@
 import yaml
 import requests
 import pandas as pd
+import pyodbc
 
 
 def get_api_vehicle():
@@ -29,6 +30,24 @@ def get_api_vehicle():
     return(pd.DataFrame(all_rows))
 
 
+def load_config_database(path="./database/config_database.yaml"):
+    with open(path, "r") as f:
+        return yaml.safe_load(f)
+    
+    
+def connect_database():
+    config = load_config_database()["db"]
 
-df = get_api_vehicle()
-print(df.head())
+    conn_str = (
+        f"DRIVER={{{config['driver']}}};"
+        f"SERVER={config['server']};"
+        f"DATABASE={config['database']};"
+        f"UID={config['username']};"
+        f"PWD={config['password']};"
+        "Encrypt=yes;"
+        "TrustServerCertificate=no;"
+        "Connection Timeout=30;"
+    )
+
+    return(pyodbc.connect(conn_str))
+
