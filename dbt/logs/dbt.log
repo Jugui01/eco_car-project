@@ -1,0 +1,31 @@
+[0m15:12:46.751972 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10aee52b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c037890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c037610>]}
+
+
+============================== 15:12:46.755551 | 3f36cdfd-586b-424b-ae3e-bbb7d2bee516 ==============================
+[0m15:12:46.755551 [info ] [MainThread]: Running with dbt=1.11.11
+[0m15:12:46.756008 [debug] [MainThread]: running dbt with arguments {'cache_selected_only': 'False', 'static_parser': 'True', 'write_json': 'True', 'profiles_dir': '/Users/julienguillot/.dbt', 'empty': 'None', 'use_colors': 'True', 'debug': 'False', 'printer_width': '80', 'no_print': 'None', 'log_format': 'default', 'indirect_selection': 'eager', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'introspect': 'True', 'target_path': 'None', 'version_check': 'True', 'partial_parse': 'True', 'log_cache_events': 'False', 'warn_error': 'None', 'invocation_command': 'dbt init dbt', 'log_path': 'logs', 'fail_fast': 'False', 'send_anonymous_usage_stats': 'True', 'use_experimental_parser': 'False'}
+[0m15:12:46.763451 [info ] [MainThread]: Creating dbt configuration folder at /Users/julienguillot/.dbt
+[0m15:13:04.655674 [debug] [MainThread]: Starter project path: /Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/dbt/include/starter_project
+[0m15:13:04.665506 [info ] [MainThread]: 
+Your new dbt project "dbt_silver_gold" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m15:13:04.666183 [info ] [MainThread]: Setting up your profile.
+[0m15:16:13.425931 [info ] [MainThread]: Profile dbt_silver_gold written to /Users/julienguillot/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m15:16:13.468322 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 206.79843, "process_in_blocks": "0", "process_kernel_time": 0.202789, "process_mem_max_rss": "121208832", "process_out_blocks": "0", "process_user_time": 1.120181}
+[0m15:16:13.469271 [debug] [MainThread]: Command `dbt init` succeeded at 15:16:13.469112 after 206.80 seconds
+[0m15:16:13.469775 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c35e060>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c4a4a70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c0c38a0>]}
+[0m15:16:13.470275 [debug] [MainThread]: Flushing usage events
+[0m15:16:14.106206 [debug] [MainThread]: An error was encountered while trying to flush usage events
