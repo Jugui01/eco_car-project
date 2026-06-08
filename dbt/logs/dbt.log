@@ -29,3 +29,19 @@ Happy modeling!
 [0m15:16:13.469775 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c35e060>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c4a4a70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c0c38a0>]}
 [0m15:16:13.470275 [debug] [MainThread]: Flushing usage events
 [0m15:16:14.106206 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:22:39.621792 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a5692b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b72b890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b72b750>]}
+
+
+============================== 16:22:39.625547 | efe76b78-1c7e-4ff7-80d3-b98152eba05d ==============================
+[0m16:22:39.625547 [info ] [MainThread]: Running with dbt=1.11.11
+[0m16:22:39.625988 [debug] [MainThread]: running dbt with arguments {'cache_selected_only': 'False', 'quiet': 'False', 'send_anonymous_usage_stats': 'True', 'no_print': 'None', 'profiles_dir': '/Users/julienguillot/.dbt', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'partial_parse': 'True', 'fail_fast': 'False', 'static_parser': 'True', 'write_json': 'True', 'invocation_command': 'dbt run', 'use_colors': 'True', 'log_format': 'default', 'target_path': 'None', 'empty': 'False', 'printer_width': '80', 'use_experimental_parser': 'False', 'warn_error': 'None', 'debug': 'False', 'introspect': 'True', 'log_path': 'logs', 'indirect_selection': 'eager', 'log_cache_events': 'False'}
+[0m16:22:39.626423 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /Users/julienguillot/Documents/Travail/eco_car-project/dbt/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m16:22:39.629425 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.063533165, "process_in_blocks": "0", "process_kernel_time": 0.186704, "process_mem_max_rss": "115867648", "process_out_blocks": "0", "process_user_time": 1.069915}
+[0m16:22:39.629846 [debug] [MainThread]: Command `dbt run` failed at 16:22:39.629766 after 0.06 seconds
+[0m16:22:39.630103 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b71b100>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b7c8290>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b764af0>]}
+[0m16:22:39.630342 [debug] [MainThread]: Flushing usage events
+[0m16:22:40.333730 [debug] [MainThread]: An error was encountered while trying to flush usage events
