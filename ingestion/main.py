@@ -1,15 +1,16 @@
-from tools import execute_sql_file, bronze_ref_vehicles
+from tools import execute_sql_file, bronze_ref_vehicles, bronze_fact_petrol
 
 def main():
-    print("🚀 Démarrage du pipeline ETL")
+    print("Démarrage du pipeline ETL")
 
     # 1. Initialisation base
     print("Initialisation de la base de données...")
     execute_sql_file("./database/initialize.sql")
 
-    # 2. Ingestion bronze
+    # 2. Ingestion bronze raw data 
     print("Ingestion couche bronze...")
     bronze_ref_vehicles()
+    bronze_fact_petrol()
 
     print("Pipeline terminé avec succès")
     

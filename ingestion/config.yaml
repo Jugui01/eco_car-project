@@ -1,3 +1,6 @@
 ademe:
   car_labelling_url: "https://data.ademe.fr/data-fair/api/v1/datasets/ademe-car-labelling/lines"
   page_size: 1000
+
+petrol:
+  petrol_url: "https://data.economie.gouv.fr/api/explore/v2.1/catalog/datasets/prix-des-carburants-en-france-flux-instantane-v2/records"

@@ -64,3 +64,68 @@ BEGIN
     )
 END
 ;
+
+IF NOT EXISTS (
+    SELECT 1
+    FROM INFORMATION_SCHEMA.TABLES
+    WHERE TABLE_NAME = 'bronze_fact_petrol'
+)
+BEGIN
+    CREATE TABLE bronze_fact_petrol (
+        [timestamp] DATETIME2 DEFAULT SYSDATETIME(),
+        [id] INT,
+        [latitude] FLOAT,
+        [longitude] FLOAT,
+        [cp] INT,
+        [pop] VARCHAR(1),
+        [adresse] VARCHAR(100),
+        [ville] VARCHAR(100),
+
+        [gazole_maj] DATETIMEOFFSET,
+        [gazole_prix] FLOAT,
+        [sp95_maj] DATETIMEOFFSET,
+        [sp95_prix] FLOAT,
+        [e85_maj] DATETIMEOFFSET,
+        [e85_prix] FLOAT,
+        [gplc_maj] DATETIMEOFFSET,
+        [gplc_prix] FLOAT,
+        [e10_maj] DATETIMEOFFSET,
+        [e10_prix] FLOAT,
+
+        [sp98_maj] DATETIMEOFFSET,
+        [sp98_prix] FLOAT,
+
+        [e10_rupture_debut] DATETIMEOFFSET,
+        [e10_rupture_type] VARCHAR(50),
+        [sp98_rupture_debut] DATETIMEOFFSET,
+        [sp98_rupture_type] VARCHAR(50),
+        [sp95_rupture_debut] DATETIMEOFFSET,
+        [sp95_rupture_type] VARCHAR(50),
+        [e85_rupture_debut] DATETIMEOFFSET,
+        [e85_rupture_type] VARCHAR(50),
+        [gplc_rupture_debut] DATETIMEOFFSET,
+        [gplc_rupture_type] VARCHAR(50),
+        [gazole_rupture_debut] DATETIMEOFFSET,
+        [gazole_rupture_type] VARCHAR(50),
+
+        [carburants_disponibles] VARCHAR(100),
+        [carburants_indisponibles] VARCHAR(100),
+        [carburants_rupture_temporaire] VARCHAR(100),
+        [carburants_rupture_definitive] VARCHAR(100),
+
+        [horaires_automate_24_24] VARCHAR(3),
+        [services_service] VARCHAR(500),
+        [departement] VARCHAR(100),
+        [code_departement] VARCHAR(2),
+        [region] VARCHAR(100),
+        [code_region] VARCHAR(2),
+        [horaires_jour] VARCHAR(500)
+    );
+END
+ELSE
+BEGIN
+    DELETE FROM bronze_fact_petrol
+    WHERE [timestamp] < DATEADD(DAY, -15, SYSDATETIME());
+END;
+
+

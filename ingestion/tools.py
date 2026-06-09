@@ -4,6 +4,7 @@ import pandas as pd
 from sqlalchemy import create_engine, text
 import urllib
 from pathlib import Path
+import os
 
 
 def get_api_vehicle():
@@ -30,6 +31,42 @@ def get_api_vehicle():
         page += 1
 
     return(pd.DataFrame(all_rows))
+
+
+def get_api_petrol():
+    import yaml
+    import requests
+    import pandas as pd
+
+    with open("ingestion/config.yaml", "r") as f:
+        config = yaml.safe_load(f)
+
+    url = config["petrol"]["petrol_url"]
+
+    limit = 100
+    offset = 0
+    all_results = []
+
+    while True:
+        params = {
+            "limit": limit,
+            "start": offset   # 👈 IMPORTANT (pas offset)
+        }
+
+        r = requests.get(url, params=params)
+        r.raise_for_status()
+
+        data = r.json()
+        results = data.get("results", [])
+
+        if not results:
+            break
+
+        all_results.extend(results)
+        offset += limit
+
+    df = pd.DataFrame(all_results)
+    return df.drop(columns=["services","prix","rupture","horaires","geom"], errors="ignore") #colonne horaires posant problème de type (dict), pas nécessaire pour l'analyse
 
 
 def load_config_database(path="./database/config_database.yaml"):
@@ -159,6 +196,15 @@ def bronze_ref_vehicles():
     try:
         ingest_dataframe(df, "bronze_ref_vehicles", schema="dbo", if_exists="replace", chunksize=1000)
         print("Ingestion de ref_vehicles complète !")
+    except Exception as e:
+        print("Erreur :", e)
+        raise SystemExit #stoppe le programme
+    
+def bronze_fact_petrol():
+    df = get_api_petrol()
+    try:
+        ingest_dataframe(df, "bronze_fact_petrol", schema="dbo", if_exists="append", chunksize=1000)
+        print("Ingestion de bronze_fact_petrol complète !")
     except Exception as e:
         print("Erreur :", e)
         raise SystemExit #stoppe le programme
