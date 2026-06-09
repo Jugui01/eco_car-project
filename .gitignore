@@ -3,3 +3,6 @@ ingestion/brouillon.py
 /ref_vehicles.xlsx
 /ref_vehicles_silver.xlsx
 /link_dataset.docx
+/bronze_fact_petrol.xlsx
+/data_petrol.xlsx
+/silver_fact_petrol.xlsx

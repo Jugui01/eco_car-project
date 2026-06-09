@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: bronze
+    schema: dbo   # ou ton schéma réel
+    tables:
+      - name: bronze_fact_petrol
